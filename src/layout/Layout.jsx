@@ -18,7 +18,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -143,12 +143,36 @@ export function DashboardLayout() {
         <Divider />
         <List>
           {[
-            "Dashboard",
-            "Products",
-            "Favorites",
-            "Inbox",
-            "Order Lists",
-            "Product Stock",
+            { title: "Dashboard", to: "/dashboard", icon: "" },
+            { title: "Products", to: "/products", icon: "" },
+            { title: "Favorites", to: "", icon: "" },
+            { title: "Inbox", to: "", icon: "" },
+            { title: "Order Lists", to: "", icon: "" },
+            { title: "Product Stock", to: "", icon: "" },
+          ].map((text, index) => (
+            <NavLink to={text.to}>
+              <ListItem key={text.to ?? text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text.title ?? text} />
+                </ListItemButton>
+              </ListItem>
+            </NavLink>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {[
+            { title: "Pricing", to: "", icon: "" },
+            { title: "Calender", to: "", icon: "" },
+            { title: "To-Do", to: "", icon: "" },
+            { title: "Contact", to: "", icon: "" },
+            { title: "Invoice", to: "", icon: "" },
+            { title: "UI Elements", to: "", icon: "" },
+            { title: "Team", to: "", icon: "" },
+            { title: "Table", to: "", icon: "" },
           ].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
@@ -163,28 +187,9 @@ export function DashboardLayout() {
         <Divider />
         <List>
           {[
-            "Pricing",
-            "Calender",
-            "To-Do",
-            "Contact",
-            "Invoice",
-            "UI Elements",
-            "Team",
-            "Table",
+            { title: "Settings", to: "", icon: "" },
+            { title: "Logout", to: "", icon: "" },
           ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["Settings", "Logout"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>

@@ -1,8 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { AppRouter } from "./AppRouter";
+
+const queryClient = new QueryClient();
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppRouter />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
